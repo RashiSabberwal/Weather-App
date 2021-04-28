@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
+import APIKEY from "./key.jsx";
 const Weather = ({ fetchCity }) => {
   const [cityData, setCityData] = useState(null);
   const [Temp, setTemp] = useState(null);
@@ -9,7 +10,7 @@ const Weather = ({ fetchCity }) => {
   const [Sunset, setSunset] = useState(null);
   useEffect(() => {
     const fetchApi = async () => {
-      const APIKEY=179e1df4ea7a105c0a9bcffb33c6e557;
+    
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${fetchCity}&appid=${APIKEY}`;
       // const url2 = `https://api.openweathermap.org/data/2.5/forecast/hourly?q=${fetchCity}&appid=fcdfb43473706adea505bc115c588a7d`;
       const response = await fetch(url);
