@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Searchbox from "./Searchbox";
+import Weather from "./Weather";
+import "./styles.css";
+export default function App() {
+  const [city, setCity] = useState("Mumbai");
+  const [fetchCity, setfetchCity] = useState("Delhi");
 
-function App() {
+  const searchcity = (event) => {
+    var curr = event.target.value;
+    return setCity(curr);
+  };
+
+  const search = () => {
+    return setfetchCity(city);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Searchbox
+        searchCity={searchcity}
+        Search={search}
+        city={city}
+        fetchCity={fetchCity}
+      />
+      <Weather fetchCity={fetchCity} />
     </div>
   );
 }
-
-export default App;
